@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -25,11 +24,7 @@
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="258.0" text="Made in" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="238.0" text="Special Thanks to" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Darmstadt and Frankfurt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="269.0" text="Google" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleEasterEgg" opacity="0.0" prefHeight="35.0" prefWidth="243.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin></Button>
+            <Label alignment="CENTER" onMouseClicked="#handleEasterEgg" prefHeight="21.0" prefWidth="269.0" text="Google" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </center>
