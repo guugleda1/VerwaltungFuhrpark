@@ -82,6 +82,8 @@ public class MitarbeiterBuchenDialogController {
 		if (((vonDate.getValue().isBefore(bisDate.getValue())) || (vonDate.getValue().isEqual(bisDate.getValue())))
 				&& (fzTable.getSelectionModel().getSelectedIndex() != -1)) {
 			buchen.setDisable(false);
+		} else {
+			buchen.setDisable(true);
 		}
 	}
 
@@ -104,7 +106,7 @@ public class MitarbeiterBuchenDialogController {
 			@Override
 			public void handle(ActionEvent arg0) {
 				date1 = true;
-				if (date2&&fzSelected) {
+				if (date2 && fzSelected) {
 					dateCorrect();
 				}
 			}
@@ -114,7 +116,7 @@ public class MitarbeiterBuchenDialogController {
 			@Override
 			public void handle(ActionEvent arg0) {
 				date2 = true;
-				if (date1&&fzSelected) {
+				if (date1 && fzSelected) {
 					dateCorrect();
 				}
 			}

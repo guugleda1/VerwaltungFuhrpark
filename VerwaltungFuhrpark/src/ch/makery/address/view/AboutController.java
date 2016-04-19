@@ -12,7 +12,7 @@ public class AboutController {
 	@FXML
 	public void handleEasterEgg() {
 		try {
-			Desktop.getDesktop().browse(new URI("www.google.com"));
+			Desktop.getDesktop().browse(new URI("www.google.de"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
