@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="400.0" prefWidth="400.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.AboutController">
+<BorderPane cacheShape="false" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.AboutController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -26,12 +26,15 @@
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Darmstadt and Frankfurt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER" onMouseClicked="#handleEasterEgg" prefHeight="21.0" prefWidth="269.0" text="Google" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
       </GridPane>
    </center>
    <top>
       <Label text="About" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets />
+            <Insets top="30.0" />
          </BorderPane.margin>
       </Label>
    </top>
