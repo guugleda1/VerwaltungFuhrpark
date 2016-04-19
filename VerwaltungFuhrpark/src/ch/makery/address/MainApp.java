@@ -94,7 +94,13 @@ public class MainApp extends Application {
 			// Verknüpfe die ControllerKlasse mit dem Fenster
 			RootLayoutController controller = loader.getController();
 			controller.setMainApp(this, verwaltung);
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 
+				@Override
+				public void handle(WindowEvent event) {
+					verwaltung.speichern();
+				}
+			});
 			// Zeige das RootLayout
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
