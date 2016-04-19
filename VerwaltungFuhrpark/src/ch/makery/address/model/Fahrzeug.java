@@ -26,17 +26,12 @@ public class Fahrzeug {
 
 	// Konstruktoren 1)für editdialog 3) für xml-parser
 	public Fahrzeug() {
-		this(null, null, null, null, true);
-	}
-
-	public Fahrzeug(String model, String licensePlate, String essentialDriverlicense, String typ,
-			Boolean availability) {
-		this.model = new SimpleStringProperty(model);
-		this.licensePlate = new SimpleStringProperty(licensePlate);
+		this.model = new SimpleStringProperty(null);
+		this.licensePlate = new SimpleStringProperty(null);
 		this.carNumber = new SimpleStringProperty(Integer.toString(carNumbercounter++));
-		this.essentialDriverslicense = new SimpleStringProperty(essentialDriverlicense);
-		this.typ = new SimpleStringProperty(typ);
-		this.availability = new SimpleBooleanProperty(availability);
+		this.essentialDriverslicense = new SimpleStringProperty(null);
+		this.typ = new SimpleStringProperty(null);
+		this.availability = new SimpleBooleanProperty(true);
 		this.von = LocalDate.now();
 		this.bis = LocalDate.now();
 	}

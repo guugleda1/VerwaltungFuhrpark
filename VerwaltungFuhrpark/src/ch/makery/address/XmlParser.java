@@ -21,25 +21,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class XmlParser {
-
-	public static ArrayList<Mitarbeiter> mitarbeiterSelectionSort(ArrayList<Mitarbeiter> mitarbeiter) {
-
-		// for (int i = 0; i < mitarbeiter.size() - 1; i++)
-		// {
-		// int index = i;
-		// for (int j = i + 1; j < mitarbeiter.size(); j++)
-		// if (Integer.parseInt(mitarbeiter.get(j).getPersonalnumber()) <
-		// Integer.parseInt(mitarbeiter.get(index).getPersonalnumber()))
-		// index = j;
-		//
-		// int smallerNumber =
-		// Integer.parseInt(mitarbeiter.get(index).getPersonalnumber());
-		// mitarbeiter.get(index).setPersonalnumber(Integer.toString(i));
-		// mitarbeiter.get(i).setPersonalnumber(Integer.toString(smallerNumber));
-		// }
-		return mitarbeiter;
-	}
-
 	public static void writeFahrzeugXml(ArrayList<Fahrzeug> fzArrList) {
 		try {
 			// write XML
@@ -49,32 +30,35 @@ public class XmlParser {
 			// root element
 			Element rootElement = doc.createElement("cars");
 			doc.appendChild(rootElement);
-
+			//create unique elements for each car
 			for (Fahrzeug fahrzeug : fzArrList) {
 				// supercars element
 				Element unique = doc.createElement("unique");
 				rootElement.appendChild(unique);
-
 				// setting attribute to element
 				Attr attr = doc.createAttribute("carNumber");
 				attr.setValue(fahrzeug.getCarNumber());
 				unique.setAttributeNode(attr);
-
-				// carname element
+				//car element
+					//create car elements
 				Element model = doc.createElement("model");
-				model.appendChild(doc.createTextNode(fahrzeug.getModel()));
 				Element licensePlate = doc.createElement("licensePlate");
-				licensePlate.appendChild(doc.createTextNode(fahrzeug.getLicensePlate()));
 				Element typ = doc.createElement("typ");
-				typ.appendChild(doc.createTextNode(fahrzeug.getTyp()));
 				Element essentialDriverslicense = doc.createElement("essentialDriverslicense");
-				essentialDriverslicense.appendChild(doc.createTextNode(fahrzeug.getEssentialDriverslicense()));
 				Element availability = doc.createElement("availability");
-				availability.appendChild(doc.createTextNode(Boolean.toString(fahrzeug.getAvailability())));
 				Element rentedBy = doc.createElement("rentedBy");
 				Element rentedByPNO = doc.createElement("rentedByPNO");
 				Element von = doc.createElement("von");
 				Element bis = doc.createElement("bis");
+				Element wieOftGeliehen = doc.createElement("wieOftGeliehen");
+				Element wieLangeGeliehen = doc.createElement("wieLangeGeliehen");
+					//fill car elements with attributes
+				model.appendChild(doc.createTextNode(fahrzeug.getModel()));
+				licensePlate.appendChild(doc.createTextNode(fahrzeug.getLicensePlate()));
+				typ.appendChild(doc.createTextNode(fahrzeug.getTyp()));
+				essentialDriverslicense.appendChild(doc.createTextNode(fahrzeug.getEssentialDriverslicense()));
+				availability.appendChild(doc.createTextNode(Boolean.toString(fahrzeug.getAvailability())));
+					//check if car is rented, clear following attributes if not
 				if (fahrzeug.getAvailability()) {
 					rentedBy.appendChild(doc.createTextNode("-"));
 					rentedByPNO.appendChild(doc.createTextNode("-"));
@@ -86,11 +70,9 @@ public class XmlParser {
 					von.appendChild(doc.createTextNode(fahrzeug.getVon().toString()));
 					bis.appendChild(doc.createTextNode(fahrzeug.getBis().toString()));
 				}
-				Element wieOftGeliehen = doc.createElement("wieOftGeliehen");
 				wieOftGeliehen.appendChild(doc.createTextNode(Integer.toString(fahrzeug.getWieOftGeliehen())));
-				Element wieLangeGeliehen = doc.createElement("wieLangeGeliehen");
 				wieLangeGeliehen.appendChild(doc.createTextNode(Integer.toString(fahrzeug.getWieLangeGeliehen())));
-
+					//append attributes to unique car element
 				unique.appendChild(model);
 				unique.appendChild(licensePlate);
 				unique.appendChild(typ);
@@ -103,7 +85,6 @@ public class XmlParser {
 				unique.appendChild(wieOftGeliehen);
 				unique.appendChild(wieLangeGeliehen);
 			}
-
 			// write the content into xml file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -127,35 +108,34 @@ public class XmlParser {
 			// root element
 			Element rootElement = doc.createElement("employee");
 			doc.appendChild(rootElement);
-
-			ArrayList<Mitarbeiter> sortedMaArrList = mitarbeiterSelectionSort(maArrList);
-			for (Mitarbeiter mitarbeiter : sortedMaArrList) {
+			//create unique elements for each employee
+			for (Mitarbeiter mitarbeiter : maArrList) {
 				// supercars element
 				Element unique = doc.createElement("unique");
 				rootElement.appendChild(unique);
-
-				// setting attribute to element
+				//setting attribute to element
 				Attr attr = doc.createAttribute("personalNumber");
 				attr.setValue(mitarbeiter.getPersonalnumber());
 				unique.setAttributeNode(attr);
-
-				// carname element
+				//employee element
+					//create employee elements
 				Element firstName = doc.createElement("firstName");
-				firstName.appendChild(doc.createTextNode(mitarbeiter.getFirstName()));
 				Element lastName = doc.createElement("lastName");
-				lastName.appendChild(doc.createTextNode(mitarbeiter.getLastName()));
 				Element birthday = doc.createElement("birthday");
-				birthday.appendChild(doc.createTextNode(mitarbeiter.getBirthday()));
 				Element driverslicense = doc.createElement("driverslicense");
-				driverslicense.appendChild(doc.createTextNode(mitarbeiter.getDriverslicense()));
 				Element ban = doc.createElement("ban");
-				ban.appendChild(doc.createTextNode(Boolean.toString(mitarbeiter.getBan())));
 				Element hatFahrzeug = doc.createElement("hatFahrzeug");
-				hatFahrzeug.appendChild(doc.createTextNode(Boolean.toString(mitarbeiter.getHatFahrzeug())));
 				Element rentedWhat = doc.createElement("rentedWhat");
 				Element rentedWhatLicensePlate = doc.createElement("rentedWhatLicensePlate");
 				Element von = doc.createElement("von");
 				Element bis = doc.createElement("bis");
+					//fill employee elements with attributes
+				firstName.appendChild(doc.createTextNode(mitarbeiter.getFirstName()));
+				lastName.appendChild(doc.createTextNode(mitarbeiter.getLastName()));
+				birthday.appendChild(doc.createTextNode(mitarbeiter.getBirthday()));
+				driverslicense.appendChild(doc.createTextNode(mitarbeiter.getDriverslicense()));
+				ban.appendChild(doc.createTextNode(Boolean.toString(mitarbeiter.getBan())));
+				hatFahrzeug.appendChild(doc.createTextNode(Boolean.toString(mitarbeiter.getHatFahrzeug())));
 				if (mitarbeiter.getHatFahrzeug()) {
 					rentedWhat.appendChild(doc.createTextNode(mitarbeiter.getRentedWhat()));
 					rentedWhatLicensePlate.appendChild(doc.createTextNode(mitarbeiter.getRentedWhatLicensePlate()));
@@ -167,7 +147,7 @@ public class XmlParser {
 					von.appendChild(doc.createTextNode("-"));
 					bis.appendChild(doc.createTextNode("-"));
 				}
-
+				//append attributes to unique employee element
 				unique.appendChild(firstName);
 				unique.appendChild(lastName);
 				unique.appendChild(driverslicense);
@@ -179,7 +159,6 @@ public class XmlParser {
 				unique.appendChild(von);
 				unique.appendChild(bis);
 			}
-
 			// write the content into xml file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -251,7 +230,6 @@ public class XmlParser {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return fzArrList;
 	}
 
@@ -311,67 +289,4 @@ public class XmlParser {
 		}
 		return maArrList;
 	}
-
-	// public static void writeStatistikXml(ArrayList<Fahrzeug> fzArrList) {
-	// try {
-	// // write XML
-	// DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	// DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	// Document doc = dBuilder.newDocument();
-	// // root element
-	// Element rootElement = doc.createElement("cars");
-	// doc.appendChild(rootElement);
-	//
-	// for (Fahrzeug fahrzeug : fzArrList) {
-	// // supercars element
-	// Element unique = doc.createElement("unique");
-	// rootElement.appendChild(unique);
-	//
-	// // setting attribute to element
-	// Attr attr = doc.createAttribute("carNumber");
-	// attr.setValue(fahrzeug.getCarNumber());
-	// unique.setAttributeNode(attr);
-	//
-	// // carname element
-	// Element model = doc.createElement("model");
-	// model.appendChild(doc.createTextNode(fahrzeug.getModel()));
-	// Element licensePlate = doc.createElement("licensePlate");
-	// licensePlate.appendChild(doc.createTextNode(fahrzeug.getLicensePlate()));
-	// Element typ = doc.createElement("typ");
-	// typ.appendChild(doc.createTextNode(fahrzeug.getTyp()));
-	// Element essentialDriverslicense =
-	// doc.createElement("essentialDriverslicense");
-	// essentialDriverslicense.appendChild(doc.createTextNode(fahrzeug.getEssentialDriverslicense()));
-	// Element availability = doc.createElement("availability");
-	// availability.appendChild(doc.createTextNode(Boolean.toString(fahrzeug.getAvailability())));
-	// Element rentedBy = doc.createElement("rentedBy");
-	// rentedBy.appendChild(doc.createTextNode(fahrzeug.getRentedBy()));
-	// Element von = doc.createElement("von");
-	// von.appendChild(doc.createTextNode(fahrzeug.getVon().toString()));
-	// Element bis = doc.createElement("bis");
-	// bis.appendChild(doc.createTextNode(fahrzeug.getBis().toString()));
-	//
-	// unique.appendChild(model);
-	// unique.appendChild(licensePlate);
-	// unique.appendChild(typ);
-	// unique.appendChild(essentialDriverslicense);
-	// unique.appendChild(availability);
-	// unique.appendChild(rentedBy);
-	// unique.appendChild(von);
-	// unique.appendChild(bis);
-	// }
-	//
-	// // write the content into xml file
-	// TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	// Transformer transformer = transformerFactory.newTransformer();
-	// DOMSource source = new DOMSource(doc);
-	// StreamResult result = new StreamResult(new File("cars.xml"));
-	// transformer.transform(source, result);
-	// // Output to console for testing
-	// StreamResult consoleResult = new StreamResult(System.out);
-	// transformer.transform(source, consoleResult);
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	// }
 }
