@@ -53,8 +53,6 @@ public class MainApp extends Application {
 				}
 			});
 			dialogStage.showAndWait();
-
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
