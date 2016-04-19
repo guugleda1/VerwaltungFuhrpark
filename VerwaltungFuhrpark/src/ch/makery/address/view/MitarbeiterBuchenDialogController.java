@@ -118,7 +118,6 @@ public class MitarbeiterBuchenDialogController {
 					dateCorrect();
 				}
 			}
-
 		});
 		fzTable.setOnMouseClicked(new EventHandler<Event>() {
 
