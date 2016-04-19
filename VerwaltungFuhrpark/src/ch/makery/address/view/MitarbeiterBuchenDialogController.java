@@ -62,7 +62,7 @@ public class MitarbeiterBuchenDialogController {
 		// Statistik
 		fahrzeug.increaseWieOftGeliehenByOne();
 		int dauerInTage;
-		dauerInTage = (int)ChronoUnit.DAYS.between(vonDate.getValue(), bisDate.getValue());
+		dauerInTage = (int) ChronoUnit.DAYS.between(vonDate.getValue(), bisDate.getValue());
 		fahrzeug.increaseWieLangeGeliehenByDays(dauerInTage);
 
 	}
@@ -71,61 +71,64 @@ public class MitarbeiterBuchenDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
+
 	@FXML
-    private void initialize() {	//fülle zellen mit daten
+	private void initialize() { // fülle zellen mit daten
 		modelColumn.setCellValueFactory(cellData -> cellData.getValue().modelProperty());
 		licensePlateColumn.setCellValueFactory(cellData -> cellData.getValue().licensePlateProperty());
-    }
+	}
 
-	public void dateCorrect(){
-		if(((vonDate.getValue().isBefore(bisDate.getValue()))||(vonDate.getValue().isEqual(bisDate.getValue())))&&(fzTable.getSelectionModel().getSelectedIndex()!=-1)){
+	public void dateCorrect() {
+		if (((vonDate.getValue().isBefore(bisDate.getValue())) || (vonDate.getValue().isEqual(bisDate.getValue())))
+				&& (fzTable.getSelectionModel().getSelectedIndex() != -1)) {
 			buchen.setDisable(false);
 		}
 	}
 
-    public void setDialogStage(Stage dialogStage) {
-        this.dialogStage = dialogStage;
-    }
+	public void setDialogStage(Stage dialogStage) {
+		this.dialogStage = dialogStage;
+	}
 
-    public void setPerson(Mitarbeiter person) {
-        this.mitarbeiter = person;
-        name.setText(mitarbeiter.getFirstName()+" "+mitarbeiter.getLastName());
-    }
-    public void setMainApp(MainApp mainApp,Verwaltung verwaltung, Mitarbeiter mitarbeiter) {
-        this.m = mainApp;
-        this.verwaltung=verwaltung;
-        setPerson(mitarbeiter);
-        fzTable.setItems(verwaltung.testFahrzeugData(mitarbeiter));
-        vonDate.setOnAction(new EventHandler<ActionEvent>() {
+	public void setPerson(Mitarbeiter person) {
+		this.mitarbeiter = person;
+		name.setText(mitarbeiter.getFirstName() + " " + mitarbeiter.getLastName());
+	}
+
+	public void setMainApp(MainApp mainApp, Verwaltung verwaltung, Mitarbeiter mitarbeiter) {
+		this.m = mainApp;
+		this.verwaltung = verwaltung;
+		setPerson(mitarbeiter);
+		fzTable.setItems(verwaltung.testFahrzeugData(mitarbeiter));
+		vonDate.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
 				date1 = true;
-				if(date2){
+				if (date2) {
 					dateCorrect();
 				}
 			}
 		});
-        bisDate.setOnAction(new EventHandler<ActionEvent>() {
+		bisDate.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
 				date2 = true;
-				if(date1){
+				if (date1) {
 					dateCorrect();
 				}
 			}
 
 		});
-        fzTable.setOnMouseClicked(new EventHandler<Event>() {
+		fzTable.setOnMouseClicked(new EventHandler<Event>() {
 
 			@Override
 			public void handle(Event event) {
 				fzSelected = true;
-				if(date1&&date2){
+				if (date1 && date2) {
 					dateCorrect();
 				}
 			}
 		});
-    }
+	}
 }

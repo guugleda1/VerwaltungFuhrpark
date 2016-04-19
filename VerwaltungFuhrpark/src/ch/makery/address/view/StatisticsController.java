@@ -12,8 +12,6 @@ import javafx.scene.control.Label;
 
 public class StatisticsController {
 
-
-
 	int wieOftGeliehenCity = 0;
 	int wieLangeGeliehenCity = 0;
 	int wieOftGeliehenLimo = 0;

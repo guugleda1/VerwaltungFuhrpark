@@ -12,7 +12,7 @@ public class Fahrzeug {
 	private StringProperty licensePlate;
 	private StringProperty essentialDriverslicense;
 	private StringProperty typ;
-	private BooleanProperty availability;	// Verfügbarkeit
+	private BooleanProperty availability; // Verfügbarkeit
 	private StringProperty rentedBy;
 	private StringProperty rentedByPNO = new SimpleStringProperty("-");
 	private StringProperty carNumber;
@@ -20,19 +20,20 @@ public class Fahrzeug {
 	private StringProperty vonSP;
 	private LocalDate bis;
 	private StringProperty bisSP;
-	private int wieOftGeliehen = 0;		//Statistik
-	private int wieLangeGeliehen = 0;	//Statistik
+	private int wieOftGeliehen = 0; // Statistik
+	private int wieLangeGeliehen = 0; // Statistik
 	private static int carNumbercounter = 1;
 
-	//Konstruktoren 1)für editdialog 3) für xml-parser
+	// Konstruktoren 1)für editdialog 3) für xml-parser
 	public Fahrzeug() {
 		this(null, null, null, null, true);
 	}
 
-	public Fahrzeug(String model, String licensePlate, String essentialDriverlicense, String typ, Boolean availability) {
+	public Fahrzeug(String model, String licensePlate, String essentialDriverlicense, String typ,
+			Boolean availability) {
 		this.model = new SimpleStringProperty(model);
 		this.licensePlate = new SimpleStringProperty(licensePlate);
-		this.carNumber= new SimpleStringProperty(Integer.toString(carNumbercounter++));
+		this.carNumber = new SimpleStringProperty(Integer.toString(carNumbercounter++));
 		this.essentialDriverslicense = new SimpleStringProperty(essentialDriverlicense);
 		this.typ = new SimpleStringProperty(typ);
 		this.availability = new SimpleBooleanProperty(availability);
@@ -40,13 +41,15 @@ public class Fahrzeug {
 		this.bis = LocalDate.now();
 	}
 
-	public Fahrzeug(String model, String licensePlate,String carNumber, String essentialDrivericense, String typ, Boolean availability, String rentedBy, String rentedByPNO, LocalDate von, LocalDate bis, int wieOftGeliehen, int wieLangeGeliehen) {
+	public Fahrzeug(String model, String licensePlate, String carNumber, String essentialDrivericense, String typ,
+			Boolean availability, String rentedBy, String rentedByPNO, LocalDate von, LocalDate bis, int wieOftGeliehen,
+			int wieLangeGeliehen) {
 		this.model = new SimpleStringProperty(model);
 		this.licensePlate = new SimpleStringProperty(licensePlate);
 		this.carNumber = new SimpleStringProperty(carNumber);
 		this.essentialDriverslicense = new SimpleStringProperty(essentialDrivericense);
 		this.typ = new SimpleStringProperty(typ);
-		//Keine Automatische Rückgabe mehr!!! Also Abfrage redundant
+		// Keine Automatische Rückgabe mehr!!! Also Abfrage redundant
 		this.availability = new SimpleBooleanProperty(availability);
 		this.rentedBy = new SimpleStringProperty(rentedBy);
 		this.rentedByPNO = new SimpleStringProperty(rentedByPNO);
@@ -56,19 +59,19 @@ public class Fahrzeug {
 		this.setWieLangeGeliehen(wieLangeGeliehen);
 	}
 
-	public static void decreaseCarNumberCounterByOne(){
+	public static void decreaseCarNumberCounterByOne() {
 		carNumbercounter--;
 	}
 
-	public LocalDate getVon(){
+	public LocalDate getVon() {
 		return von;
 	}
 
-	public void setVon(LocalDate date){
+	public void setVon(LocalDate date) {
 		this.von = date;
 	}
 
-	public StringProperty vonProperty(){
+	public StringProperty vonProperty() {
 		vonSP = new SimpleStringProperty(von.toString());
 		return vonSP;
 	}
@@ -81,32 +84,32 @@ public class Fahrzeug {
 		this.bis = bis;
 	}
 
-	public StringProperty bisProperty(){
+	public StringProperty bisProperty() {
 		bisSP = new SimpleStringProperty(bis.toString());
 		return bisSP;
 	}
 
-	public String getRentedBy(){
+	public String getRentedBy() {
 		return rentedBy.get();
 	}
 
-	public void setRentedBy(Mitarbeiter mitarbeiter){
+	public void setRentedBy(Mitarbeiter mitarbeiter) {
 		this.rentedBy.set(mitarbeiter.getFirstName() + " " + mitarbeiter.getLastName());
 	}
 
-	public StringProperty rentedByProperty(){
+	public StringProperty rentedByProperty() {
 		return rentedBy;
 	}
 
-	public String getCarNumber(){
+	public String getCarNumber() {
 		return carNumber.get();
 	}
 
-	public void setCarNumber(String carNumber){
+	public void setCarNumber(String carNumber) {
 		this.carNumber.set(carNumber);
 	}
 
-	public StringProperty carNumberProperty(){
+	public StringProperty carNumberProperty() {
 		return carNumber;
 	}
 

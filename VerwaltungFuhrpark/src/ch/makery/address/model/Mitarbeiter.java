@@ -25,7 +25,7 @@ public class Mitarbeiter {
 	private static int count = 100;
 
 	// Konstruktor für neue Mitarbeiter
-	public Mitarbeiter(){
+	public Mitarbeiter() {
 		this.firstName = new SimpleStringProperty(null);
 		this.lastName = new SimpleStringProperty(null);
 		this.personalnumber = new SimpleStringProperty(Integer.toString(count++));
@@ -40,8 +40,11 @@ public class Mitarbeiter {
 		this.bis = LocalDate.now();
 		this.bisSP = new SimpleStringProperty(null);
 	}
+
 	// Konstruktor für Objekterzeugung aus XML-Datei
-	public Mitarbeiter(String firstName, String lastName,String personalnumber, String driverslicense, Boolean ban, String birthday, Boolean hatFahrzeug, String rentedWhat, String rentedWhatLicensePlate, LocalDate von, LocalDate bis) {
+	public Mitarbeiter(String firstName, String lastName, String personalnumber, String driverslicense, Boolean ban,
+			String birthday, Boolean hatFahrzeug, String rentedWhat, String rentedWhatLicensePlate, LocalDate von,
+			LocalDate bis) {
 		this.firstName = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
 		this.personalnumber = new SimpleStringProperty(personalnumber);
@@ -58,31 +61,31 @@ public class Mitarbeiter {
 		count++;
 	}
 
-	public static void decreaseCountByOne(){
+	public static void decreaseCountByOne() {
 		count--;
 	}
 
-	public String getRentedWhat(){
+	public String getRentedWhat() {
 		return rentedWhat.get();
 	}
 
-	public void setRentedWhat(Fahrzeug fahrzeug){
+	public void setRentedWhat(Fahrzeug fahrzeug) {
 		this.rentedWhat.set(fahrzeug.getModel());
 	}
 
-	public StringProperty rentedWhatProperty(){
+	public StringProperty rentedWhatProperty() {
 		return rentedWhat;
 	}
 
-	public String getRentedWhatLicensePlate(){
+	public String getRentedWhatLicensePlate() {
 		return rentedWhatLicensePlate.get();
 	}
 
-	public void setRentedWhatLicensePlate(Fahrzeug fahrzeug){
+	public void setRentedWhatLicensePlate(Fahrzeug fahrzeug) {
 		this.rentedWhatLicensePlate.set(fahrzeug.getLicensePlate());
 	}
 
-	public StringProperty rentedWhatLicensePlate(){
+	public StringProperty rentedWhatLicensePlate() {
 		return rentedWhatLicensePlate;
 	}
 
@@ -94,7 +97,7 @@ public class Mitarbeiter {
 		this.von = von;
 	}
 
-	public StringProperty vonProperty(){
+	public StringProperty vonProperty() {
 		vonSP = new SimpleStringProperty(von.toString());
 		return vonSP;
 	}
@@ -107,20 +110,20 @@ public class Mitarbeiter {
 		this.bis = bis;
 	}
 
-	public StringProperty bisProperty(){
+	public StringProperty bisProperty() {
 		bisSP = new SimpleStringProperty(bis.toString());
 		return bisSP;
 	}
 
-	public Boolean getHatFahrzeug(){
+	public Boolean getHatFahrzeug() {
 		return hatFahrzeug.get();
 	}
 
-	public void setHatFahrzeug(Boolean hatFahrzeug){
+	public void setHatFahrzeug(Boolean hatFahrzeug) {
 		this.hatFahrzeug.set(hatFahrzeug);
 	}
 
-	public BooleanProperty hatFahrzeugProperty(){
+	public BooleanProperty hatFahrzeugProperty() {
 		return hatFahrzeug;
 	}
 

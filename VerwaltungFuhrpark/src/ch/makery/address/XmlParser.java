@@ -222,16 +222,16 @@ public class XmlParser {
 								eElement.getElementsByTagName("typ").item(0).getTextContent(),
 								Boolean.valueOf(eElement.getElementsByTagName("availability").item(0).getTextContent()),
 								eElement.getElementsByTagName("rentedBy").item(0).getTextContent(),
-								eElement.getElementsByTagName("rentedByPNO").item(0).getTextContent(),
-								datevon,
-								datebis,
-								Integer.parseInt(eElement.getElementsByTagName("wieOftGeliehen").item(0).getTextContent()),
-								Integer.parseInt(eElement.getElementsByTagName("wieLangeGeliehen").item(0).getTextContent())));
+								eElement.getElementsByTagName("rentedByPNO").item(0).getTextContent(), datevon, datebis,
+								Integer.parseInt(
+										eElement.getElementsByTagName("wieOftGeliehen").item(0).getTextContent()),
+								Integer.parseInt(
+										eElement.getElementsByTagName("wieLangeGeliehen").item(0).getTextContent())));
 					} else {
-						LocalDate datevon = LocalDate.parse(eElement.getElementsByTagName("von").item(0).getTextContent(),
-								formatter);
-						LocalDate datebis = LocalDate.parse(eElement.getElementsByTagName("bis").item(0).getTextContent(),
-								formatter);
+						LocalDate datevon = LocalDate
+								.parse(eElement.getElementsByTagName("von").item(0).getTextContent(), formatter);
+						LocalDate datebis = LocalDate
+								.parse(eElement.getElementsByTagName("bis").item(0).getTextContent(), formatter);
 						fzArrList.add(new Fahrzeug(eElement.getElementsByTagName("model").item(0).getTextContent(),
 								eElement.getElementsByTagName("licensePlate").item(0).getTextContent(),
 								currentItem.getAttributes().getNamedItem("carNumber").getNodeValue(),
@@ -239,11 +239,11 @@ public class XmlParser {
 								eElement.getElementsByTagName("typ").item(0).getTextContent(),
 								Boolean.valueOf(eElement.getElementsByTagName("availability").item(0).getTextContent()),
 								eElement.getElementsByTagName("rentedBy").item(0).getTextContent(),
-								eElement.getElementsByTagName("rentedByPNO").item(0).getTextContent(),
-								datevon,
-								datebis,
-								Integer.parseInt(eElement.getElementsByTagName("wieOftGeliehen").item(0).getTextContent()),
-								Integer.parseInt(eElement.getElementsByTagName("wieLangeGeliehen").item(0).getTextContent())));
+								eElement.getElementsByTagName("rentedByPNO").item(0).getTextContent(), datevon, datebis,
+								Integer.parseInt(
+										eElement.getElementsByTagName("wieOftGeliehen").item(0).getTextContent()),
+								Integer.parseInt(
+										eElement.getElementsByTagName("wieLangeGeliehen").item(0).getTextContent())));
 					}
 
 				}

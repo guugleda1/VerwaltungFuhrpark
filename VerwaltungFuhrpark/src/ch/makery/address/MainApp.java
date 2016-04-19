@@ -44,7 +44,7 @@ public class MainApp extends Application {
 			dialogStage.setScene(scene);
 			dialogStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				@Override
-				public void handle(WindowEvent e){
+				public void handle(WindowEvent e) {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("EXTREMELY IMPORTANT");
 					alert.setHeaderText("FOR YOUR INFORMATION");
@@ -93,7 +93,7 @@ public class MainApp extends Application {
 			rootLayout = (BorderPane) loader.load();
 			// Verknüpfe die ControllerKlasse mit dem Fenster
 			RootLayoutController controller = loader.getController();
-			controller.setMainApp(this,verwaltung);
+			controller.setMainApp(this, verwaltung);
 
 			// Zeige das RootLayout
 			Scene scene = new Scene(rootLayout);
@@ -114,7 +114,7 @@ public class MainApp extends Application {
 			rootLayout.setCenter(personOverview);
 			// Verknüpfe die ControllerKlasse mit dem Fenster
 			MitarbeiterOverviewController controller = loader.getController();
-			controller.setMainApp(this,verwaltung);
+			controller.setMainApp(this, verwaltung);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -182,7 +182,7 @@ public class MainApp extends Application {
 			dialogStage.setScene(scene);
 
 			MitarbeiterBuchenDialogController controller = loader.getController();
-			controller.setMainApp(this,verwaltung, mitarbeiter);
+			controller.setMainApp(this, verwaltung, mitarbeiter);
 			controller.setDialogStage(dialogStage);
 			controller.setPerson(mitarbeiter);
 
@@ -204,7 +204,7 @@ public class MainApp extends Application {
 			dialogStage.setScene(scene);
 
 			FahrzeugBuchenDialogController controller = loader.getController();
-			controller.setMainApp(this,verwaltung, fahrzeug);
+			controller.setMainApp(this, verwaltung, fahrzeug);
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -213,7 +213,6 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-
 
 	public Stage getPrimaryStage() {
 		return primaryStage;

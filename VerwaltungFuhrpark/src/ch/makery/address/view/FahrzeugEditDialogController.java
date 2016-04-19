@@ -46,14 +46,14 @@ public class FahrzeugEditDialogController {
 
 	@FXML
 	private void handleOk() {
-			fahrzeug.setModel(modelField.getText());
-			fahrzeug.setLicensePlate(licensePlateField.getText());
-			fahrzeug.setEssentialDriverslicense(essentialDriverlicenseField.getText());
-			fahrzeug.setTyp(typField.getText());
-			fahrzeug.setAvailability(Boolean.valueOf(availabiltiyField.getText()));
+		fahrzeug.setModel(modelField.getText());
+		fahrzeug.setLicensePlate(licensePlateField.getText());
+		fahrzeug.setEssentialDriverslicense(essentialDriverlicenseField.getText());
+		fahrzeug.setTyp(typField.getText());
+		fahrzeug.setAvailability(Boolean.valueOf(availabiltiyField.getText()));
 
-			okClicked = true;
-			dialogStage.close();
+		okClicked = true;
+		dialogStage.close();
 	}
 
 	@FXML

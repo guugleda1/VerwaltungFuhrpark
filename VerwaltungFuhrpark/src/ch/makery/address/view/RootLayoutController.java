@@ -21,15 +21,18 @@ public class RootLayoutController {
 		verwaltung.speichern();
 	}
 
-	@FXML public void handleSchlieﬂen(ActionEvent event) {
+	@FXML
+	public void handleSchlieﬂen(ActionEvent event) {
 		mainApp.closePrimaryStage();
 	}
 
-	@FXML public void showAbout() {
+	@FXML
+	public void showAbout() {
 		mainApp.showAbout();
 	}
 
-	@FXML public void showStatistics() {
+	@FXML
+	public void showStatistics() {
 		mainApp.showStatistics();
 	}
 }

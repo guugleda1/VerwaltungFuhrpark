@@ -57,10 +57,10 @@ public class FahrzeugBuchenDialogController {
 		fahrzeug.setRentedBy(mitarbeiter);
 		fahrzeug.setVon(vonDate.getValue());
 		fahrzeug.setBis(bisDate.getValue());
-		//Stat
+		// Stat
 		fahrzeug.increaseWieOftGeliehenByOne();
 		int dauerInTage;
-		dauerInTage = (int)ChronoUnit.DAYS.between(vonDate.getValue(), bisDate.getValue());
+		dauerInTage = (int) ChronoUnit.DAYS.between(vonDate.getValue(), bisDate.getValue());
 		fahrzeug.increaseWieLangeGeliehenByDays(dauerInTage);
 		dialogStage.close();
 	}
@@ -69,61 +69,64 @@ public class FahrzeugBuchenDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
+
 	@FXML
-    private void initialize() {	//fülle zellen mit daten
+	private void initialize() { // fülle zellen mit daten
 		lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
 		personalNumberColumn.setCellValueFactory(cellData -> cellData.getValue().personalnumberProperty());
-    }
+	}
 
-	public void dateCorrect(){
-		if(((vonDate.getValue().isBefore(bisDate.getValue()))||(vonDate.getValue().isEqual(bisDate.getValue())))&&(maTable.getSelectionModel().getSelectedIndex()!=-1)){
+	public void dateCorrect() {
+		if (((vonDate.getValue().isBefore(bisDate.getValue())) || (vonDate.getValue().isEqual(bisDate.getValue())))
+				&& (maTable.getSelectionModel().getSelectedIndex() != -1)) {
 			buchen.setDisable(false);
 		}
 	}
-	
-    public void setDialogStage(Stage dialogStage) {
-        this.dialogStage = dialogStage;
-    }
 
-    public void setFahrzeug(Fahrzeug fahrzeug) {
-        this.fahrzeug = fahrzeug;
-        name.setText(fahrzeug.getModel()+" "+fahrzeug.getLicensePlate());
-    }
-    public void setMainApp(MainApp mainApp,Verwaltung verwaltung, Fahrzeug fahrzeug) {
-        this.mainApp = mainApp;
-        this.verwaltung=verwaltung;
-        setFahrzeug(fahrzeug);
-        maTable.setItems(verwaltung.testMitarbeiterData(fahrzeug));
-vonDate.setOnAction(new EventHandler<ActionEvent>() {
-			
+	public void setDialogStage(Stage dialogStage) {
+		this.dialogStage = dialogStage;
+	}
+
+	public void setFahrzeug(Fahrzeug fahrzeug) {
+		this.fahrzeug = fahrzeug;
+		name.setText(fahrzeug.getModel() + " " + fahrzeug.getLicensePlate());
+	}
+
+	public void setMainApp(MainApp mainApp, Verwaltung verwaltung, Fahrzeug fahrzeug) {
+		this.mainApp = mainApp;
+		this.verwaltung = verwaltung;
+		setFahrzeug(fahrzeug);
+		maTable.setItems(verwaltung.testMitarbeiterData(fahrzeug));
+		vonDate.setOnAction(new EventHandler<ActionEvent>() {
+
 			@Override
 			public void handle(ActionEvent arg0) {
 				date1 = true;
-				if(date2){
+				if (date2) {
 					dateCorrect();
 				}
 			}
 		});
-        bisDate.setOnAction(new EventHandler<ActionEvent>() {
+		bisDate.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
 				date2 = true;
-				if(date1){
+				if (date1) {
 					dateCorrect();
 				}
 			}
-        	
+
 		});
-        maTable.setOnMouseClicked(new EventHandler<Event>() {
+		maTable.setOnMouseClicked(new EventHandler<Event>() {
 
 			@Override
 			public void handle(Event event) {
 				maSelected = true;
-				if(date1&&date2){
+				if (date1 && date2) {
 					dateCorrect();
 				}
 			}
 		});
-    }
+	}
 }

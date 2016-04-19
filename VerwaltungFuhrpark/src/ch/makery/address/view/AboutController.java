@@ -7,11 +7,10 @@ import java.net.URISyntaxException;
 
 import javafx.fxml.FXML;
 
-
 public class AboutController {
 
 	@FXML
-	public void handleEasterEgg(){
+	public void handleEasterEgg() {
 		try {
 			Desktop.getDesktop().browse(new URI("www.google.com"));
 		} catch (IOException e) {

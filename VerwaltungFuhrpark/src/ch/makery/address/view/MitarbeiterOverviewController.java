@@ -21,54 +21,95 @@ import javafx.scene.control.Button;
 
 public class MitarbeiterOverviewController {
 	// UI-Elemente für Mitarbeiter
-	@FXML private TableView<Mitarbeiter> maTable;
-	@FXML private TableColumn<Mitarbeiter, String> firstNameColumn;
-	@FXML private TableColumn<Mitarbeiter, String> lastNameColumn;
-	@FXML private TableColumn<Mitarbeiter, String> personalnumberColumn;
-	@FXML private Label firstNameLabel;
-	@FXML private Label lastNameLabel;
-	@FXML private Label driverlicenseLabel;
-	@FXML private Label personalnumberLabel;
-	@FXML private Label banLabel;
-	@FXML private Label birthdayLabel;
-	@FXML private TextField field;
-	@FXML private TextField field2;
+	@FXML
+	private TableView<Mitarbeiter> maTable;
+	@FXML
+	private TableColumn<Mitarbeiter, String> firstNameColumn;
+	@FXML
+	private TableColumn<Mitarbeiter, String> lastNameColumn;
+	@FXML
+	private TableColumn<Mitarbeiter, String> personalnumberColumn;
+	@FXML
+	private Label firstNameLabel;
+	@FXML
+	private Label lastNameLabel;
+	@FXML
+	private Label driverlicenseLabel;
+	@FXML
+	private Label personalnumberLabel;
+	@FXML
+	private Label banLabel;
+	@FXML
+	private Label birthdayLabel;
+	@FXML
+	private TextField field;
+	@FXML
+	private TextField field2;
 	// UI-Elemente für Fahrzeuge
-	@FXML private TableView<Fahrzeug> fzTable;
-	@FXML private TableColumn<Fahrzeug, String> typColumn;
-	@FXML private TableColumn<Fahrzeug, String> modelColumn;
-	@FXML private TableColumn<Fahrzeug, String> licensePlateColumn;
-	@FXML private Label typLabel;
-	@FXML private Label modelLabel;
-	@FXML private Label licensePlateLabel;
-	@FXML private Label essentialDriverLicenseLabel;
-	@FXML private Label availableLabel;
-	@FXML private Label if_hasCarLabel;
-	@FXML private Label rentedWhatLabel;
-	@FXML private Label rentedWhatLicensePlateLabel;
-	@FXML private Label if_fromLabel;
-	@FXML private Label fromLabel;
-	@FXML private Label if_toLabel;
-	@FXML private Label toLabel;
-	@FXML private Label rentedByLabel;
-	@FXML private Label rentedByPNOLabel;
-	@FXML private Label vonLabel;
-	@FXML private Label bisLabel;
-	@FXML private Label durchsNutzungLabel;
-	@FXML private Button aendernButtonM;
-	@FXML private Button loeschenButtonM;
-	@FXML private Button buchenButtonM;
-	@FXML private Button zurueckgebenButtonM;
-	@FXML private Button aendernButtonF;
-	@FXML private Button loeschenButtonF;
-	@FXML private Button buchenButtonF;
-	@FXML private Button zurueckgebenButtonF;
-	@FXML private TabPane tabPane;
+	@FXML
+	private TableView<Fahrzeug> fzTable;
+	@FXML
+	private TableColumn<Fahrzeug, String> typColumn;
+	@FXML
+	private TableColumn<Fahrzeug, String> modelColumn;
+	@FXML
+	private TableColumn<Fahrzeug, String> licensePlateColumn;
+	@FXML
+	private Label typLabel;
+	@FXML
+	private Label modelLabel;
+	@FXML
+	private Label licensePlateLabel;
+	@FXML
+	private Label essentialDriverLicenseLabel;
+	@FXML
+	private Label availableLabel;
+	@FXML
+	private Label if_hasCarLabel;
+	@FXML
+	private Label rentedWhatLabel;
+	@FXML
+	private Label rentedWhatLicensePlateLabel;
+	@FXML
+	private Label if_fromLabel;
+	@FXML
+	private Label fromLabel;
+	@FXML
+	private Label if_toLabel;
+	@FXML
+	private Label toLabel;
+	@FXML
+	private Label rentedByLabel;
+	@FXML
+	private Label rentedByPNOLabel;
+	@FXML
+	private Label vonLabel;
+	@FXML
+	private Label bisLabel;
+	@FXML
+	private Label durchsNutzungLabel;
+	@FXML
+	private Button aendernButtonM;
+	@FXML
+	private Button loeschenButtonM;
+	@FXML
+	private Button buchenButtonM;
+	@FXML
+	private Button zurueckgebenButtonM;
+	@FXML
+	private Button aendernButtonF;
+	@FXML
+	private Button loeschenButtonF;
+	@FXML
+	private Button buchenButtonF;
+	@FXML
+	private Button zurueckgebenButtonF;
+	@FXML
+	private TabPane tabPane;
 
 	// Referenz auf MainApp
 	private Verwaltung verwaltung;
 	private MainApp mainApp;
-
 
 	public MitarbeiterOverviewController() {
 	}
@@ -152,7 +193,7 @@ public class MitarbeiterOverviewController {
 				toLabel.setText(mitarbeiter.getBis().toString());
 				buchenButtonM.setDisable(true);
 				zurueckgebenButtonM.setDisable(false);
-			} else {	// falls Fahrzeug nicht geliehen
+			} else { // falls Fahrzeug nicht geliehen
 				buchenButtonM.setDisable(false);
 				zurueckgebenButtonM.setDisable(true);
 				rentedWhatLabel.setText("-");
@@ -206,7 +247,7 @@ public class MitarbeiterOverviewController {
 				zurueckgebenButtonF.setDisable(false);
 			}
 			if (fahrzeug.getWieOftGeliehen() > 0) {
-				durchsNutzung = (double)fahrzeug.getWieLangeGeliehen()/(double)fahrzeug.getWieOftGeliehen();
+				durchsNutzung = (double) fahrzeug.getWieLangeGeliehen() / (double) fahrzeug.getWieOftGeliehen();
 			}
 			durchsNutzungLabel.setText(formatter.format(durchsNutzung) + " Tage");
 		} else {
@@ -315,14 +356,14 @@ public class MitarbeiterOverviewController {
 																					// MA
 																					// wurde
 																					// gewählt?
-		if (selectedPerson != null) { 												// Wenn gewählt, dann
-			boolean okClicked = mainApp.showMitarbeiterEditDialog(selectedPerson); 	// Zeige
+		if (selectedPerson != null) { // Wenn gewählt, dann
+			boolean okClicked = mainApp.showMitarbeiterEditDialog(selectedPerson); // Zeige
 																					// MAEditDialog
 			if (okClicked) {
 				// refreshPersonTable(); wirklich notwendig?
-				showPersonDetails(selectedPerson);									// Aktualisiert die
-																					// Details des angewählten
-																					// Mitarbeiters
+				showPersonDetails(selectedPerson); // Aktualisiert die
+													// Details des angewählten
+													// Mitarbeiters
 			}
 		}
 	}
@@ -368,8 +409,7 @@ public class MitarbeiterOverviewController {
 																				// wurde
 																				// gewählt?
 
-		if (!mitarbeiter.getHatFahrzeug())
-		{
+		if (!mitarbeiter.getHatFahrzeug()) {
 			Fahrzeug fahrzeug = fzTable.getSelectionModel().getSelectedItem(); // wird
 			// benötigt,
 			// um
@@ -382,7 +422,7 @@ public class MitarbeiterOverviewController {
 			// bereits
 			// angewählt
 
-			mainApp.showMitarbeiterBuchenDialog(mitarbeiter); 	// Zeige
+			mainApp.showMitarbeiterBuchenDialog(mitarbeiter); // Zeige
 																// MitarbeiterDialog
 																// mit MA
 			showPersonDetails(mitarbeiter);
@@ -393,7 +433,7 @@ public class MitarbeiterOverviewController {
 	@FXML
 	private void handleFahrzeugBuchen() {
 		Fahrzeug fahrzeug = fzTable.getSelectionModel().getSelectedItem();
-		if(fahrzeug.getAvailability()){
+		if (fahrzeug.getAvailability()) {
 			Mitarbeiter mitarbeiter = maTable.getSelectionModel().getSelectedItem();
 			mainApp.showFahrzeugBuchenDialog(fahrzeug);
 			showPersonDetails(mitarbeiter);
@@ -431,7 +471,10 @@ public class MitarbeiterOverviewController {
 																				// bereits
 																				// angewählt
 
-		//int selectedPerson = Integer.parseInt(personalnumberColumn.getCellData(selectedIndex)) - 100; seeeehr ungeschickt. - was passiert wenn es eine maNummer nicht gibt?!
+		// int selectedPerson =
+		// Integer.parseInt(personalnumberColumn.getCellData(selectedIndex)) -
+		// 100; seeeehr ungeschickt. - was passiert wenn es eine maNummer nicht
+		// gibt?!
 		if (selectedIndex >= 0) {
 			verwaltung.getPersonData().get(selectedIndex).setHatFahrzeug(false); // Mitarbeiter
 																					// gibt
