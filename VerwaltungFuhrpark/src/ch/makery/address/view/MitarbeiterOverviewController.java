@@ -20,7 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 public class MitarbeiterOverviewController {
-	// Mitarbeiter
+	// UI-Elemente für Mitarbeiter
 	@FXML private TableView<Mitarbeiter> maTable;
 	@FXML private TableColumn<Mitarbeiter, String> firstNameColumn;
 	@FXML private TableColumn<Mitarbeiter, String> lastNameColumn;
@@ -33,7 +33,7 @@ public class MitarbeiterOverviewController {
 	@FXML private Label birthdayLabel;
 	@FXML private TextField field;
 	@FXML private TextField field2;
-	// Fahrzeuge
+	// UI-Elemente für Fahrzeuge
 	@FXML private TableView<Fahrzeug> fzTable;
 	@FXML private TableColumn<Fahrzeug, String> typColumn;
 	@FXML private TableColumn<Fahrzeug, String> modelColumn;
@@ -144,7 +144,7 @@ public class MitarbeiterOverviewController {
 			birthdayLabel.setText(mitarbeiter.getBirthday());
 			aendernButtonM.setDisable(false);
 			loeschenButtonM.setDisable(false);
-			// falls Fahrzeug geliehen, zeige dieses an
+			// falls Fahrzeug geliehen
 			if (mitarbeiter.getHatFahrzeug()) {
 				rentedWhatLabel.setText(mitarbeiter.getRentedWhat());
 				rentedWhatLicensePlateLabel.setText(mitarbeiter.getRentedWhatLicensePlate());
@@ -152,7 +152,7 @@ public class MitarbeiterOverviewController {
 				toLabel.setText(mitarbeiter.getBis().toString());
 				buchenButtonM.setDisable(true);
 				zurueckgebenButtonM.setDisable(false);
-			} else {	// falls Fahrzeug nicht geliehen, blende Labels aus und deaktiviere Buttons
+			} else {	// falls Fahrzeug nicht geliehen
 				buchenButtonM.setDisable(false);
 				zurueckgebenButtonM.setDisable(true);
 				rentedWhatLabel.setText("-");
