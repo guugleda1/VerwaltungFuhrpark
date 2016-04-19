@@ -28,7 +28,7 @@
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="269.0" text="Google" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleEasterEgg" opacity="0.0" prefHeight="35.0" prefWidth="243.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="20.0" />
+                  <Insets />
                </GridPane.margin></Button>
          </children>
       </GridPane>
