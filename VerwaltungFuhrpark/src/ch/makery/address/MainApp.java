@@ -72,6 +72,7 @@ public class MainApp extends Application {
 			controller.setMainApp(this, verwaltung);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
+			dialogStage.setResizable(false);
 			dialogStage.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();

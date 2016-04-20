@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<employee>
+	<unique personalNumber="100">
+		<firstName>Ahmadkhan</firstName>
+		<lastName>Tingar</lastName>
+		<driverslicense>B</driverslicense>
+		<ban>false</ban>
+		<birthday>1994-09-19</birthday>
+		<hatFahrzeug>false</hatFahrzeug>
+		<rentedWhat>-</rentedWhat>
+		<rentedWhatLicensePlate>-</rentedWhatLicensePlate>
+		<von>-</von>
+		<bis>-</bis>
+	</unique>
+	<unique personalNumber="101">
+		<firstName>Steffen</firstName>
+		<lastName>Meiselbach</lastName>
+		<driverslicense>B</driverslicense>
+		<ban>false</ban>
+		<birthday>1993-12-07</birthday>
+		<hatFahrzeug>false</hatFahrzeug>
+		<rentedWhat>-</rentedWhat>
+		<rentedWhatLicensePlate>-</rentedWhatLicensePlate>
+		<von>-</von>
+		<bis>-</bis>
+	</unique>
+	<unique personalNumber="102">
+		<firstName>Testmann</firstName>
+		<lastName>Testfamilie</lastName>
+		<driverslicense>B</driverslicense>
+		<ban>false</ban>
+		<birthday>1995-12-01</birthday>
+		<hatFahrzeug>false</hatFahrzeug>
+		<rentedWhat>-</rentedWhat>
+		<rentedWhatLicensePlate>-</rentedWhatLicensePlate>
+		<von>-</von>
+		<bis>-</bis>
+	</unique>
+	<unique personalNumber="103">
+		<firstName>Max</firstName>
+		<lastName>Mustermann</lastName>
+		<driverslicense>B</driverslicense>
+		<ban>false</ban>
+		<birthday>1991-01-01</birthday>
+		<hatFahrzeug>true</hatFahrzeug>
+		<rentedWhat>Audi A5</rentedWhat>
+		<rentedWhatLicensePlate>WI-FB-96</rentedWhatLicensePlate>
+		<von>2016-04-21</von>
+		<bis>2016-04-29</bis>
+	</unique>
+	<unique personalNumber="104">
+		<firstName>Maxime</firstName>
+		<lastName>Musterfrau</lastName>
+		<driverslicense>B</driverslicense>
+		<ban>false</ban>
+		<birthday>1991-01-01</birthday>
+		<hatFahrzeug>false</hatFahrzeug>
+		<rentedWhat>-</rentedWhat>
+		<rentedWhatLicensePlate>-</rentedWhatLicensePlate>
+		<von>-</von>
+		<bis>-</bis>
+	</unique>
+	<unique personalNumber="105">
+		<firstName>Test</firstName>
+		<lastName>Test</lastName>
+		<driverslicense>B</driverslicense>
+		<ban>false</ban>
+		<birthday>1991-01-01</birthday>
+		<hatFahrzeug>false</hatFahrzeug>
+		<rentedWhat>-</rentedWhat>
+		<rentedWhatLicensePlate>-</rentedWhatLicensePlate>
+		<von>-</von>
+		<bis>-</bis>
+	</unique>
+	<unique personalNumber="106">
+		<firstName>Markus</firstName>
+		<lastName>Mann</lastName>
+		<driverslicense>B</driverslicense>
+		<ban>false</ban>
+		<birthday>1991-01-01</birthday>
+		<hatFahrzeug>false</hatFahrzeug>
+		<rentedWhat>-</rentedWhat>
+		<rentedWhatLicensePlate>-</rentedWhatLicensePlate>
+		<von>-</von>
+		<bis>-</bis>
+	</unique>
+	<unique personalNumber="107">
+		<firstName>Balea</firstName>
+		<lastName>Men</lastName>
+		<driverslicense>B</driverslicense>
+		<ban>false</ban>
+		<birthday>1991-01-01</birthday>
+		<hatFahrzeug>false</hatFahrzeug>
+		<rentedWhat>-</rentedWhat>
+		<rentedWhatLicensePlate>-</rentedWhatLicensePlate>
+		<von>-</von>
+		<bis>-</bis>
+	</unique>
+</employee>

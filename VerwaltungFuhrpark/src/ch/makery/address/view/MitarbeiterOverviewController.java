@@ -325,7 +325,7 @@ public class MitarbeiterOverviewController {
 
 	@FXML
 	private void handleNewPerson() {
-		Mitarbeiter tempPerson = new Mitarbeiter(); // erzeuge MA Dummy
+		Mitarbeiter tempPerson = new Mitarbeiter(verwaltung); // erzeuge MA Dummy
 		boolean okClicked = mainApp.showMitarbeiterEditDialog(tempPerson); // Führe
 																			// MAEditDialog
 																			// aus,
@@ -334,19 +334,17 @@ public class MitarbeiterOverviewController {
 		if (okClicked) {
 			verwaltung.getPersonData().add(tempPerson); // Füge neuen MA zu
 														// PersonData hinzu
-		} else {
-			Mitarbeiter.decreaseCountByOne();
+			verwaltung.sortByPersonalNumber();
+			refreshPersonTable();
 		}
 	}
 
 	@FXML
 	private void handleNewFahrzeug() {
-		Fahrzeug tempFahrzeug = new Fahrzeug();
+		Fahrzeug tempFahrzeug = new Fahrzeug(verwaltung);
 		boolean okClicked = mainApp.showFahrzeugEditDialog(tempFahrzeug);
 		if (okClicked) {
 			verwaltung.getFahrzeugData().add(tempFahrzeug);
-		} else {
-			Fahrzeug.decreaseCarNumberCounterByOne();
 		}
 	}
 
@@ -356,8 +354,12 @@ public class MitarbeiterOverviewController {
 																					// MA
 																					// wurde
 																					// gewählt?
-		if (selectedPerson != null) { // Wenn gewählt, dann
-			boolean okClicked = mainApp.showMitarbeiterEditDialog(selectedPerson); // Zeige
+		if (selectedPerson != null) {
+
+
+
+																					// Wenn gewählt, dann
+			boolean okClicked = mainApp.showMitarbeiterEditDialog(selectedPerson); 	// Zeige
 																					// MAEditDialog
 			if (okClicked) {
 				// refreshPersonTable(); wirklich notwendig?
@@ -374,7 +376,7 @@ public class MitarbeiterOverviewController {
 		if (selectedFahrzeug != null) {
 			boolean okClicked = mainApp.showFahrzeugEditDialog(selectedFahrzeug);
 			if (okClicked) {
-				refreshFahrzeugTable();
+//				refreshFahrzeugTable();
 				showFahrzeugDetails(selectedFahrzeug);
 			}
 		}

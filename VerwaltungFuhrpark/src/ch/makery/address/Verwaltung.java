@@ -19,6 +19,21 @@ public class Verwaltung {
 		personData = makeObservableListMitarbeiter(XmlParser.readMitarbeiterXml());
 	}
 
+	public void sortByPersonalNumber() {
+		for (int i = 0; i < personData.size() - 1; i++) {
+			int index = i;
+			for (int j = i + 1; j < personData.size(); j++) {
+				if (Integer.parseInt(personData.get(j).getPersonalnumber().toString())
+						< Integer.parseInt(personData.get(index).getPersonalnumber().toString())) {
+					index = j;
+				}
+			}
+			Mitarbeiter tempMitarbeiter = personData.get(index);
+			personData.set(index, personData.get(i));
+			personData.set(i, tempMitarbeiter);
+		}
+	}
+
 	public ObservableList<Fahrzeug> testFahrzeugData(Mitarbeiter mitarbeiter) { // gibt
 																				// liste
 																				// aller

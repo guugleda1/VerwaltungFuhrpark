@@ -76,18 +76,31 @@ public class StatisticsController {
 			for (int j = i + 1; j < fzList.size(); j++) {
 				if (fzList.get(j).getWieOftGeliehen() > fzList.get(index).getWieOftGeliehen()) {
 					index = j;
+				} else if (fzList.get(j).getWieOftGeliehen() == fzList.get(index).getWieOftGeliehen() && fzList.get(j).getWieLangeGeliehen() > fzList.get(index).getWieLangeGeliehen()) {
+					index = j;
 				}
 			}
 			Fahrzeug tempFahrzeug = fzList.get(index);
 			fzList.set(index, fzList.get(i));
 			fzList.set(i, tempFahrzeug);
 		}
-
-		mostRented1Label.setText("1. " + fzList.get(0).getModel() + " | " + fzList.get(0).getLicensePlate() + " | "
-				+ fzList.get(0).getWieOftGeliehen() + "x geliehen");
-		mostRented2Label.setText("2. " + fzList.get(1).getModel() + " | " + fzList.get(1).getLicensePlate() + " | "
-				+ fzList.get(1).getWieOftGeliehen() + "x geliehen");
-		mostRented3Label.setText("3. " + fzList.get(2).getModel() + " | " + fzList.get(2).getLicensePlate() + " | "
-				+ fzList.get(2).getWieOftGeliehen() + "x geliehen");
+		if (fzList.size() > 0) {
+			mostRented1Label.setText("1. " + fzList.get(0).getModel() + " | " + fzList.get(0).getLicensePlate() + " | "
+					+ fzList.get(0).getWieOftGeliehen() + "x geliehen für insgesamt: " + fzList.get(0).getWieLangeGeliehen() + " Tage");
+		} else {
+			mostRented1Label.setText("1. ---------------------------------------");
+		}
+		if (fzList.size() > 1) {
+			mostRented2Label.setText("2. " + fzList.get(1).getModel() + " | " + fzList.get(1).getLicensePlate() + " | "
+					+ fzList.get(1).getWieOftGeliehen() + "x geliehen für insgesamt: " + fzList.get(1).getWieLangeGeliehen() + " Tage");
+		} else {
+			mostRented2Label.setText("2. ---------------------------------------");
+		}
+		if (fzList.size() > 2) {
+			mostRented3Label.setText("3. " + fzList.get(2).getModel() + " | " + fzList.get(2).getLicensePlate() + " | "
+					+ fzList.get(2).getWieOftGeliehen() + "x geliehen für insgesamt: " + fzList.get(2).getWieLangeGeliehen() + " Tage");
+		} else {
+			mostRented3Label.setText("3. ---------------------------------------");
+		}
 	}
 }

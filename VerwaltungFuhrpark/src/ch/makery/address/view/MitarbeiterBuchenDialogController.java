@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import ch.makery.address.MainApp;
@@ -64,7 +65,6 @@ public class MitarbeiterBuchenDialogController {
 		int dauerInTage;
 		dauerInTage = (int) ChronoUnit.DAYS.between(vonDate.getValue(), bisDate.getValue());
 		fahrzeug.increaseWieLangeGeliehenByDays(dauerInTage);
-
 	}
 
 	@FXML
@@ -80,7 +80,7 @@ public class MitarbeiterBuchenDialogController {
 
 	public void dateCorrect() {
 		if (((vonDate.getValue().isBefore(bisDate.getValue())) || (vonDate.getValue().isEqual(bisDate.getValue())))
-				&& (fzTable.getSelectionModel().getSelectedIndex() != -1)) {
+				&& (fzTable.getSelectionModel().getSelectedIndex() != -1) && !vonDate.getValue().isBefore(LocalDate.now())) {
 			buchen.setDisable(false);
 		} else {
 			buchen.setDisable(true);
