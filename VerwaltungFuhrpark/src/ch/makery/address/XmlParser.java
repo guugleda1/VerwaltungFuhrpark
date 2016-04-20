@@ -36,9 +36,9 @@ public class XmlParser {
 				Element unique = doc.createElement("unique");
 				rootElement.appendChild(unique);
 				// setting attribute to element
-				Attr attr = doc.createAttribute("carNumber");
-				attr.setValue(fahrzeug.getCarNumber());
-				unique.setAttributeNode(attr);
+//				Attr attr = doc.createAttribute("carNumber");
+//				attr.setValue(fahrzeug.getCarNumber());
+//				unique.setAttributeNode(attr);
 				//car element
 					//create car elements
 				Element model = doc.createElement("model");
@@ -101,6 +101,7 @@ public class XmlParser {
 
 	public static void writeMitarbeiterXml(ArrayList<Mitarbeiter> maArrList) {
 		try {
+			maArrList = sortByPersonalNumber(maArrList);
 			// write XML
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -190,13 +191,11 @@ public class XmlParser {
 				Node nNode = nList.item(i);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
-					Node currentItem = nList.item(i);
 					if (Boolean.valueOf((eElement.getElementsByTagName("availability").item(0).getTextContent()))) {
 						LocalDate datevon = LocalDate.now();
 						LocalDate datebis = LocalDate.now();
 						fzArrList.add(new Fahrzeug(eElement.getElementsByTagName("model").item(0).getTextContent(),
 								eElement.getElementsByTagName("licensePlate").item(0).getTextContent(),
-								currentItem.getAttributes().getNamedItem("carNumber").getNodeValue(),
 								eElement.getElementsByTagName("essentialDriverslicense").item(0).getTextContent(),
 								eElement.getElementsByTagName("typ").item(0).getTextContent(),
 								Boolean.valueOf(eElement.getElementsByTagName("availability").item(0).getTextContent()),
@@ -213,7 +212,6 @@ public class XmlParser {
 								.parse(eElement.getElementsByTagName("bis").item(0).getTextContent(), formatter);
 						fzArrList.add(new Fahrzeug(eElement.getElementsByTagName("model").item(0).getTextContent(),
 								eElement.getElementsByTagName("licensePlate").item(0).getTextContent(),
-								currentItem.getAttributes().getNamedItem("carNumber").getNodeValue(),
 								eElement.getElementsByTagName("essentialDriverslicense").item(0).getTextContent(),
 								eElement.getElementsByTagName("typ").item(0).getTextContent(),
 								Boolean.valueOf(eElement.getElementsByTagName("availability").item(0).getTextContent()),
@@ -286,6 +284,22 @@ public class XmlParser {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		return maArrList;
+	}
+
+	public static ArrayList<Mitarbeiter> sortByPersonalNumber(ArrayList<Mitarbeiter> maArrList) {
+		for (int i = 0; i < maArrList.size() - 1; i++) {
+			int index = i;
+			for (int j = i + 1; j < maArrList.size(); j++) {
+				if (Integer.parseInt(maArrList.get(j).getPersonalnumber().toString())
+						< Integer.parseInt(maArrList.get(index).getPersonalnumber().toString())) {
+					index = j;
+				}
+			}
+			Mitarbeiter tempMitarbeiter = maArrList.get(index);
+			maArrList.set(index, maArrList.get(i));
+			maArrList.set(i, tempMitarbeiter);
 		}
 		return maArrList;
 	}

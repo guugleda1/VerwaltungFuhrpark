@@ -2,13 +2,13 @@ package ch.makery.address.model;
 
 import java.time.LocalDate;
 
+import ch.makery.address.Verwaltung;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Mitarbeiter {
-
 	private StringProperty firstName;
 	private StringProperty lastName;
 	private StringProperty driverslicense;
@@ -22,13 +22,12 @@ public class Mitarbeiter {
 	private StringProperty vonSP;
 	private LocalDate bis;
 	private StringProperty bisSP;
-	private static int count = 100;
 
 	// Konstruktor für Erzeugung neuer Mitarbeiter
-	public Mitarbeiter() {
+	public Mitarbeiter(Verwaltung verwaltung) {
 		this.firstName = new SimpleStringProperty(null);
 		this.lastName = new SimpleStringProperty(null);
-		this.personalnumber = new SimpleStringProperty(Integer.toString(count++));
+		this.personalnumber = new SimpleStringProperty(freePersonalNumber(verwaltung));
 		this.driverslicense = new SimpleStringProperty(null);
 		this.ban = new SimpleBooleanProperty(false);
 		this.birthday = new SimpleStringProperty(null);
@@ -58,12 +57,16 @@ public class Mitarbeiter {
 		this.vonSP = new SimpleStringProperty(von.toString());
 		this.bis = bis;
 		this.bisSP = new SimpleStringProperty(bis.toString());
-		count++;
 	}
 
-	//needed for cancel "add new employee" because count++ in line 31 has to be reverted
-	public static void decreaseCountByOne() {
-		count--;
+	public static String freePersonalNumber(Verwaltung verwaltung) {
+		int tempcount = 100;
+		for (int i = 0; i < verwaltung.getPersonData().size(); i++) {
+			if (Integer.parseInt(verwaltung.getPersonData().get(i).getPersonalnumber()) == tempcount) {
+				tempcount++;
+			}
+		}
+		return Integer.toString(tempcount);
 	}
 
 	//Getter & Setter
